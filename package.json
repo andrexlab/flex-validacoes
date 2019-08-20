@@ -1,0 +1,25 @@
+{
+	"name": "flex-validacoes",
+	"version": "1.0.0",
+	"description": "",
+	"main": "dist/index.js",
+	"scripts": {
+		"test": "mocha",
+		"build": "./node_modules/.bin/tsc --build"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/flex-xlab/flex-validacoes.git"
+	},
+	"keywords": [],
+	"author": "xLab <xlab@flexcontact.com.br>",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/flex-xlab/flex-validacoes/issues"
+	},
+	"homepage": "https://github.com/flex-xlab/flex-validacoes#readme",
+	"devDependencies": {
+		"mocha": "^6.2.0",
+		"typescript": "^3.5.3"
+	}
+}
