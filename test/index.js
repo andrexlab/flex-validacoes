@@ -83,6 +83,14 @@ describe('Teste email', function() {
 		});
 	});
 
+	describe('Email OK', function() {
+		it('Deve ter o Email OK com . _ +', function() {
+			const res = Validador.validarEmail('zi+gnd.ig_or@gmail.com.br');
+
+			assert.equal(res.success, true);
+		});
+	});
+
 	describe('Email não OK', function() {
 		it('Deve dar erro no email', function() {
 			const res = Validador.validarEmail('zignd.igor@gmail.com.br.br');

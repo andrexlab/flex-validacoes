@@ -115,7 +115,7 @@ var blackList = {
         '99999999999',
     ],
 };
-var regexEmail = new RegExp(/^[a-z0-9.]+@[a-z0-9]+\.[a-z]+(\.[a-z]+)?$/i);
+var regexEmail = new RegExp(/^[a-z0-9._\-\+]+@[a-z0-9]+\.[a-z]+(\.[a-z]+)?$/i);
 var Validador = /** @class */ (function () {
     function Validador() {
     }
