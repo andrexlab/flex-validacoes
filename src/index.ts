@@ -115,7 +115,7 @@ const blackList = {
 	],
 };
 
-const regexEmail = new RegExp(/^[a-z0-9.]+@[a-z0-9]+\.[a-z]+(\.[a-z]+)?$/i);
+const regexEmail = new RegExp(/^[a-z0-9._\-\+]+@[a-z0-9]+\.[a-z]+(\.[a-z]+)?$/i);
 
 export class Validador {
 	static validarTelefone(telefone: string) {
