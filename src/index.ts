@@ -166,17 +166,21 @@ class Regras {
 	}
 
 	static tem10Digitos(telefone: string) {
-		const primeiroNumero = telefone.substring(2, 3);
+		const primeiroDigito = telefone.substring(2, 3);
 		const permitidos = ['2', '3', '4', '5' ];
-		if (!permitidos.includes(primeiroNumero)) {
+		if (!permitidos.includes(primeiroDigito)) {
 			throw 'Número fixo iniciando com dígito inválido';
 		}
 	}
 
 	static tem11Digitos(telefone: string) {
-		const primeiroNumero = telefone.substring(2, 3);
+		const nonoDigito = telefone.substring(2,3)
+		if (nonoDigito !== '9') {
+			throw 'Nono dígito não é 9'
+		}
+		const primeiroDigito = telefone.substring(3, 4);
 		const permitidos = ['6', '7', '8', '9'];
-		if (!permitidos.includes(primeiroNumero)) {
+		if (!permitidos.includes(primeiroDigito)) {
 			throw 'Número de celular iniciando com dígito inválido';
 		}
 	}

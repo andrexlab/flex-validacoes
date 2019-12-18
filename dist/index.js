@@ -163,16 +163,20 @@ var Regras = /** @class */ (function () {
         }
     };
     Regras.tem10Digitos = function (telefone) {
-        var primeiroNumero = telefone.substring(2, 3);
+        var primeiroDigito = telefone.substring(2, 3);
         var permitidos = ['2', '3', '4', '5'];
-        if (!permitidos.includes(primeiroNumero)) {
+        if (!permitidos.includes(primeiroDigito)) {
             throw 'Número fixo iniciando com dígito inválido';
         }
     };
     Regras.tem11Digitos = function (telefone) {
-        var primeiroNumero = telefone.substring(2, 3);
+        var nonoDigito = telefone.substring(2, 3);
+        if (nonoDigito !== '9') {
+            throw 'Nono dígito não é 9';
+        }
+        var primeiroDigito = telefone.substring(3, 4);
         var permitidos = ['6', '7', '8', '9'];
-        if (!permitidos.includes(primeiroNumero)) {
+        if (!permitidos.includes(primeiroDigito)) {
             throw 'Número de celular iniciando com dígito inválido';
         }
     };

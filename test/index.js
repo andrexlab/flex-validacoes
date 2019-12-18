@@ -83,9 +83,18 @@ describe('Telefone Celular', function() {
 		});
 	});
 
-	describe('Celular iniciando com número inválido', function() {
-		it('Deve dar erro no primeiro dígito', function() {
+	describe('Nono dígito não é 9', function() {
+		it('Deve dar erro no nono dígito', function() {
 			const res = Validador.validarTelefone('48 599005500');
+
+			assert.equal(res.success, false);
+			assert.equal(res.message, 'Nono dígito não é 9');
+		});
+	});
+
+	describe('Primeiro dígito é inválido', function() {
+		it('Deve dar erro no primeiro dígito', function() {
+			const res = Validador.validarTelefone('48 944005500');
 
 			assert.equal(res.success, false);
 			assert.equal(res.message, 'Número de celular iniciando com dígito inválido');
