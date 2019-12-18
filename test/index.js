@@ -20,7 +20,7 @@ describe('Telefone Fixo', function() {
 	});
 
 	describe('Fixo inicando com dígito inválido', function() {
-		it('Deve dar erro no primeiro dígito', function() {
+		it('Deve dar erro no oitavo dígito', function() {
 			const res = Validador.validarTelefone('48 10005000');
 
 			assert.equal(res.success, false);
@@ -75,7 +75,7 @@ describe('Telefone Celular', function() {
 	});
 
 	describe('Celular sem nono dígito', function() {
-		it('Deve dar erro no primeiro dígito', function() {
+		it('Deve dar erro no oitavo dígito', function() {
 			const res = Validador.validarTelefone('48 99552100');
 
 			assert.equal(res.success, false);
@@ -92,8 +92,8 @@ describe('Telefone Celular', function() {
 		});
 	});
 
-	describe('Primeiro dígito é inválido', function() {
-		it('Deve dar erro no primeiro dígito', function() {
+	describe('Oitavo dígito é inválido', function() {
+		it('Deve dar erro no oitavo dígito', function() {
 			const res = Validador.validarTelefone('48 944005500');
 
 			assert.equal(res.success, false);

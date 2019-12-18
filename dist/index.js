@@ -163,9 +163,9 @@ var Regras = /** @class */ (function () {
         }
     };
     Regras.tem10Digitos = function (telefone) {
-        var primeiroDigito = telefone.substring(2, 3);
+        var oitavoDigito = telefone.substring(2, 3);
         var permitidos = ['2', '3', '4', '5'];
-        if (!permitidos.includes(primeiroDigito)) {
+        if (!permitidos.includes(oitavoDigito)) {
             throw 'Número fixo iniciando com dígito inválido';
         }
     };
@@ -174,9 +174,9 @@ var Regras = /** @class */ (function () {
         if (nonoDigito !== '9') {
             throw 'Nono dígito não é 9';
         }
-        var primeiroDigito = telefone.substring(3, 4);
+        var oitavoDigito = telefone.substring(3, 4);
         var permitidos = ['6', '7', '8', '9'];
-        if (!permitidos.includes(primeiroDigito)) {
+        if (!permitidos.includes(oitavoDigito)) {
             throw 'Número de celular iniciando com dígito inválido';
         }
     };
