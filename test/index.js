@@ -18,6 +18,15 @@ describe('Telefone Fixo', function() {
 			assert.equal(res.message, 'DDD inválido');
 		});
 	});
+
+	describe('Fixo inicando com dígito inválido', function() {
+		it('Deve dar erro no primeiro dígito', function() {
+			const res = Validador.validarTelefone('48 10005000');
+
+			assert.equal(res.success, false);
+			assert.equal(res.message, 'Número fixo iniciando com dígito inválido');
+		});
+	});
 });
 
 describe('Telefone Celular', function() {
@@ -62,6 +71,24 @@ describe('Telefone Celular', function() {
 
 			assert.equal(res.success, false);
 			assert.equal(res.message, 'Telefone com menos de 11 dígitos');
+		});
+	});
+
+	describe('Celular sem nono dígito', function() {
+		it('Deve dar erro no primeiro dígito', function() {
+			const res = Validador.validarTelefone('48 99552100');
+
+			assert.equal(res.success, false);
+			assert.equal(res.message, 'Número fixo iniciando com dígito inválido');
+		});
+	});
+
+	describe('Celular iniciando com número inválido', function() {
+		it('Deve dar erro no primeiro dígito', function() {
+			const res = Validador.validarTelefone('48 599005500');
+
+			assert.equal(res.success, false);
+			assert.equal(res.message, 'Número de celular iniciando com dígito inválido');
 		});
 	});
 });

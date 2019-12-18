@@ -124,12 +124,13 @@ export class Validador {
 		try {
 			Regras.blackList(telNumero);
 			Regras.dddValido(telNumero);
+			Regras.digitosQuantidade(telNumero);
 
 			if (telNumero.length === 10) {
-				Regras.tem10Numeros(telNumero);
-			} else {
-				Regras.tem11Numeros(telNumero);
-				Regras.primeiroNumero9(telNumero);
+				Regras.tem10Digitos(telNumero);
+			} 
+			if (telNumero.length === 11) {
+				Regras.tem11Digitos(telNumero);
 			}
 		} catch (error) {
 			return { success: false, message: error };
@@ -145,7 +146,6 @@ export class Validador {
 		if (regexOk) {
 			return { success: true };
 		}
-
 		return { success: false, message: 'Email inválido' };
 	}
 }
@@ -157,22 +157,6 @@ class Regras {
 		}
 	}
 
-	static tem11Numeros(telefone: string) {
-		if (telefone.length > 11) {
-			throw 'Telefone com mais de 11 dígitos';
-		} else if (telefone.length < 11) {
-			throw 'Telefone com menos de 11 dígitos';
-		}
-	}
-
-	static tem10Numeros(telefone: string) {
-		if (telefone.length > 10) {
-			throw 'Telefone com mais de 10 dígitos';
-		} else if (telefone.length < 10) {
-			throw 'Telefone com menos de 10 dígitos';
-		}
-	}
-
 	static dddValido(telefone: string) {
 		const ddd = telefone.substring(0, 2);
 
@@ -181,11 +165,27 @@ class Regras {
 		}
 	}
 
-	static primeiroNumero9(telefone: string) {
+	static tem10Digitos(telefone: string) {
 		const primeiroNumero = telefone.substring(2, 3);
+		const permitidos = ['2', '3', '4', '5' ];
+		if (!permitidos.includes(primeiroNumero)) {
+			throw 'Número fixo iniciando com dígito inválido';
+		}
+	}
 
-		if ('9' !== primeiroNumero) {
-			throw 'Telefone não começa com 9';
+	static tem11Digitos(telefone: string) {
+		const primeiroNumero = telefone.substring(2, 3);
+		const permitidos = ['6', '7', '8', '9'];
+		if (!permitidos.includes(primeiroNumero)) {
+			throw 'Número de celular iniciando com dígito inválido';
+		}
+	}
+
+	static digitosQuantidade(telefone: string) {
+		if (telefone.length > 11) {
+			throw 'Telefone com mais de 11 dígitos';
+		} else if (telefone.length < 10) {
+			throw 'Telefone com menos de 11 dígitos';
 		}
 	}
 }

@@ -124,12 +124,12 @@ var Validador = /** @class */ (function () {
         try {
             Regras.blackList(telNumero);
             Regras.dddValido(telNumero);
+            Regras.digitosQuantidade(telNumero);
             if (telNumero.length === 10) {
-                Regras.tem10Numeros(telNumero);
+                Regras.tem10Digitos(telNumero);
             }
-            else {
-                Regras.tem11Numeros(telNumero);
-                Regras.primeiroNumero9(telNumero);
+            if (telNumero.length === 11) {
+                Regras.tem11Digitos(telNumero);
             }
         }
         catch (error) {
@@ -156,32 +156,32 @@ var Regras = /** @class */ (function () {
             throw 'Telefone inválido';
         }
     };
-    Regras.tem11Numeros = function (telefone) {
-        if (telefone.length > 11) {
-            throw 'Telefone com mais de 11 dígitos';
-        }
-        else if (telefone.length < 11) {
-            throw 'Telefone com menos de 11 dígitos';
-        }
-    };
-    Regras.tem10Numeros = function (telefone) {
-        if (telefone.length > 10) {
-            throw 'Telefone com mais de 10 dígitos';
-        }
-        else if (telefone.length < 10) {
-            throw 'Telefone com menos de 10 dígitos';
-        }
-    };
     Regras.dddValido = function (telefone) {
         var ddd = telefone.substring(0, 2);
         if (!dddsBrasileiros.estadoPorDdd.hasOwnProperty(ddd)) {
             throw 'DDD inválido';
         }
     };
-    Regras.primeiroNumero9 = function (telefone) {
+    Regras.tem10Digitos = function (telefone) {
         var primeiroNumero = telefone.substring(2, 3);
-        if ('9' !== primeiroNumero) {
-            throw 'Telefone não começa com 9';
+        var permitidos = ['2', '3', '4', '5'];
+        if (!permitidos.includes(primeiroNumero)) {
+            throw 'Número fixo iniciando com dígito inválido';
+        }
+    };
+    Regras.tem11Digitos = function (telefone) {
+        var primeiroNumero = telefone.substring(2, 3);
+        var permitidos = ['6', '7', '8', '9'];
+        if (!permitidos.includes(primeiroNumero)) {
+            throw 'Número de celular iniciando com dígito inválido';
+        }
+    };
+    Regras.digitosQuantidade = function (telefone) {
+        if (telefone.length > 11) {
+            throw 'Telefone com mais de 11 dígitos';
+        }
+        else if (telefone.length < 10) {
+            throw 'Telefone com menos de 11 dígitos';
         }
     };
     return Regras;
